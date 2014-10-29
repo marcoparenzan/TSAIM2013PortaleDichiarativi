@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Dichiarativi</h2>
+<table class="table table-striped" id="dichiarativi">
+    <thead>
+        <tr>
+            <th>Codice Fiscale</th>
+            <th>Anno</th>
+            <th>Numero</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+@section Scripts {
+
+    <script  type="text/javascript">
+
+
+        $(function () {
+
+            $.getJSON('@Url.Action("Data")', function (response) {
+
+                var tbody = $("#dichiarativi tbody");
+
+                $(response).each(function (i, item) {
+
+
+                    var tr = "<tr><td>" + item.CodiceFiscale + "</td><td>" + item.Anno + "</td><td>" + item.Numero + "</td></tr>";
+
+                    tbody.append(tr);
+
+
+                });
+
+
+            })
+
+        });
+
+
+    </script>
+
+
+}
